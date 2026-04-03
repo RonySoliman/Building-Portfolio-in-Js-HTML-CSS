@@ -246,8 +246,3 @@ npx serve .
 ## 👤 Author
 
 Built as part of the **Udacity Front-End Web Developer** curriculum — DOM Manipulation & Vanilla JS module.
-
-```
-**Note that this regex is NOT a secure method to counter XSS attacks in your application. This is a general test to be used for this course but should not be your main line of defense in a production application.**
-
-If an input fails validation, an error message should appear, giving the user details on why the submission failed. These should be updated with the "emailError" div and the "messageError" div.
