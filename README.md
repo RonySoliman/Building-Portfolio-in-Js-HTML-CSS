@@ -1,4 +1,4 @@
-# Personal Portfolio
+<!--# Personal Portfolio
 
 ## Getting Started
 
@@ -94,7 +94,159 @@ Here are the things you should validate for...
 You can use regular expressions for your validation rules. Since regular expressions aren't a part of this course, feel free to use these regex...
 ```
 illegal characters  = /[^a-zA-Z0-9@._-]/
-valid email address = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+Ends Here!!
+-->
+
+# 🗂️ Personal Portfolio — Vanilla JS, HTML & CSS
+
+A fully responsive, data-driven personal portfolio website built with **pure HTML, CSS, and vanilla JavaScript** — no frameworks or libraries required. Content is dynamically rendered from JSON data files, making it easy to update without touching the HTML.
+
+---
+
+## 📌 Project Overview
+
+This portfolio site features three main sections: an **About Me** bio, a scrollable **Projects showcase** with an interactive spotlight panel, and a **Contact form** with client-side validation. All project cards and bio content are fetched asynchronously from local JSON files and injected into the DOM at runtime.
+
+---
+
+## 📁 Project Structure
+
+```
+├── index.html                  # Main HTML shell (minimal markup, JS-populated)
+├── css/
+│   ├── styles.css              # Custom styles with CSS variables & mobile-first layout
+│   └── normalize.css           # Cross-browser CSS reset
+├── js/
+│   └── draft.js                # All JS logic: data fetching, DOM rendering, validation
+├── data/
+│   ├── aboutMeData.json        # Bio text and headshot path
+│   └── projectsData.json       # Array of 10 project entries
+├── images/
+│   └── *.webp                  # Card and spotlight images for each project
+└── README.md
+```
+
+---
+
+## ✨ Features
+
+### 🙋 About Me Section
+- Bio text and headshot are fetched from `aboutMeData.json` via the Fetch API
+- DOM elements are created and injected dynamically — no hardcoded content in HTML
+
+### 🗃️ Projects Showcase
+- 10 project cards rendered dynamically from `projectsData.json`
+- Each card shows a **cover image**, project name, and short description
+- Clicking a card updates the **Spotlight panel** with the full description and an external link
+- First project is auto-selected on page load
+- Scrollable card list with **left/right arrow navigation** (smooth scroll)
+- **Responsive layout**: arrows scroll horizontally on mobile, vertically on desktop
+
+### 📬 Contact Form
+- Client-side validation with clear inline error messages
+- Email validated against regex `/^[^\s@]+@[^\s@]+\.[^\s@]+$/`
+- Special characters blocked in both email and message fields
+- Live **character counter** (0/300) with red highlight on overflow
+- Message capped at 500 characters
+- Form clears error state on each new submission attempt
+
+### 🎨 Styling
+- CSS custom properties (variables) for consistent theming across light/dark states
+- Mobile-first responsive design using media queries
+- Smooth scroll navigation via anchor links
+- Hover transitions on buttons and nav items
+- Scrollbars hidden on project list (navigation handled by arrow buttons)
+
+---
+
+## 🗂️ Data Format
+
+### `aboutMeData.json`
+```json
+{
+  "aboutMe": "Your bio text here...",
+  "headshot": "./images/your-photo.webp"
+}
+```
+
+### `projectsData.json`
+```json
+[
+  {
+    "project_id": "project_todo",
+    "project_name": "To-Do List App",
+    "short_description": "Organize your tasks efficiently.",
+    "long_description": "Full description shown in the spotlight panel...",
+    "card_image": "../images/todo_card.webp",
+    "spotlight_image": "../images/todo_spotlight.webp",
+    "url": "https://your-live-link.com"
+  }
+]
+```
+
+All fields are optional with graceful fallbacks — missing images default to `blog_card.webp` / `blog_spotlight.webp`.
+
+---
+
+## 🚀 How to Run
+
+No build step or dependencies needed. Just open the project in a local server (required for the Fetch API to load JSON files):
+
+**Option 1 — VS Code Live Server:**
+Install the [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer), right-click `index.html` → *Open with Live Server*.
+
+**Option 2 — Python:**
+```bash
+python3 -m http.server 8080
+# then open http://localhost:8080
+```
+
+**Option 3 — Node.js:**
+```bash
+npx serve .
+```
+
+> ⚠️ Opening `index.html` directly as a `file://` URL will block the Fetch API calls due to CORS restrictions.
+
+---
+
+## 🛠️ Tech Stack
+
+| Technology | Purpose |
+|---|---|
+| HTML5 | Semantic page structure |
+| CSS3 | Custom properties, Flexbox, responsive layout |
+| Vanilla JavaScript (ES6+) | Async data fetching, DOM manipulation, event handling |
+| Fetch API | Load JSON data asynchronously |
+| CSS normalize.css | Cross-browser style consistency |
+
+---
+
+## ✏️ Customization Guide
+
+| What to change | Where |
+|---|---|
+| Bio text & headshot | `data/aboutMeData.json` |
+| Add / edit projects | `data/projectsData.json` |
+| Project images | `images/` folder (use `.webp` for best performance) |
+| Color theme | CSS variables in `:root` block in `styles.css` |
+| Nav links & page title | `index.html` |
+
+---
+
+## 📝 Notes & Limitations
+
+- The site uses the native **Fetch API**, so it requires a local server to run (see above)
+- No backend is connected — the contact form displays a success alert on valid submission but does not send emails
+- Navigation arrows detect mobile/desktop breakpoint at load time (`max-width: 1024px`); resizing the window mid-session won't update scroll direction without a page refresh
+- All images use the `.webp` format for optimized file sizes
+
+---
+
+## 👤 Author
+
+Built as part of the **Udacity Front-End Web Developer** curriculum — DOM Manipulation & Vanilla JS module.
+
 ```
 **Note that this regex is NOT a secure method to counter XSS attacks in your application. This is a general test to be used for this course but should not be your main line of defense in a production application.**
 
